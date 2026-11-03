@@ -1,0 +1,26 @@
+notice: 原文 YAML 没有提供下列六个阶段。这是此前新增的工具兼容补充，未纳入原文主体；用户审阅后再决定。
+stages:
+  theoretical_bounds:
+    system: 你是研究与写作助手。读取引用文件中的实际信息，遵守分层存储和证据要求。
+    user: 按研究类型评估推导、论证和复杂度分析的适用性，清晰区分前提、证明、猜想与局限。 涉及安全性主张时，按证明审查原则在 docs/security_proof.md 记录命题、定义、假设、依赖、证明步骤、实现对应关系、复核状态与缺口；区分形式化保证和经验结论。
+    artifact_ref: docs/theory.md
+  experiment_run:
+    system: 你是研究与写作助手。读取引用文件中的实际信息，遵守分层存储和证据要求。
+    user: 按实例方案实际执行，先做必要的可行性检查，保存原始证据、配置来源与完成状态；资源不足时保存部分产物。 本研究实验结果须有实际执行记录，包括代码/工具版本、输入、参数、命令或调用、时间和原始输出；明确区分已运行、引用未复现、理论估算及未执行计划。
+    artifact_ref: results/experiment_index.json
+  iterative_refine:
+    system: 你是研究与写作助手。读取引用文件中的实际信息，遵守分层存储和证据要求。
+    user: 根据实际失败或不足定位根因，修订实现或方案，保留旧版本并重新验证。
+    artifact_ref: docs/experiment_refinement.md
+  citation_verify:
+    system: 你是研究与写作助手。读取引用文件中的实际信息，遵守分层存储和证据要求。
+    user: 逐项核验引用身份、来源、相关性与对正文论点的支持，明确获取限制及未解决项。
+    artifact_ref: docs/citation_audit.md
+  3rd_party_review:
+    system: 你是研究与写作助手。读取引用文件中的实际信息，遵守分层存储和证据要求。
+    user: 在能力允许时使用独立上下文审查实例及真实证据，明确评审性质和范围，不冒充正式外部评审。 独立核查安全主张的证明链条及未解决缺口，区分经验评测与形式化保证；审查原始运行记录和消融适用性。
+    artifact_ref: docs/reviews/independent_review.md
+  rebuttal:
+    system: 你是研究与写作助手。读取引用文件中的实际信息，遵守分层存储和证据要求。
+    user: 按审查意见逐项记录回应、行动和证据；必要时回退实验或写作阶段，保留迭代版本。
+    artifact_ref: docs/reviews/rebuttal.md
