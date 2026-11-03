@@ -1,21 +1,19 @@
 --- references/original/整理版.md
 +++ PROMPT.md
-@@ -5,6 +5,14 @@
- 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
- 
- > 整理说明：以你上传的网页为依据，恢复标题、列表、阶段表格、目录树和 YAML 层级。网页本身已有错位，以下是依据结构重排的阅读版，不能证明与作者发布前的文件排版完全一致。原文观点与技术表述保持不变，未作事实核验。
+@@ -1,4 +1,12 @@
+ # AI 论文调研与写作提示词
 +
-+> **版本说明：以原文为主体的逐项修订版。** 原章节、阶段顺序、长篇写作/代码/评审提示词及其详细要求均保留，文末 YAML 完整展开。只改动已确认的内容：方法与实例/环境分开存储、工具按需求选择、安全证明审查、实验必须实际执行、允许有依据地精简、消融酌情使用。未系统审阅的原版数字、循环、目标和其他表述保留供逐项审阅，不代表这些表述已经被验证正确。原作者开场及结语属于来源内容，未核实其出处说法。
++> **版本说明：以原文为主体的逐项修订版。** 原章节、阶段顺序、长篇写作/代码/评审提示词及其详细要求均保留，文末 YAML 完整展开。只改动已确认的内容：方法与实例/环境分开存储、工具按需求选择、安全证明审查、实验必须实际执行、允许有依据地精简、消融酌情使用。未系统审阅的原版数字、循环、目标和其他表述保留供逐项审阅，不代表这些表述已经被验证正确。
 +>
 +> **文件对应：** 本文件是主要阅读入口；文末 YAML 的完整内容由 `prompts.yaml` 与 `RESTRICTS.yaml` 提供给本地工具读取，不再用短摘要替代原阶段提示词。原文没有提供的六个阶段提示词在 `prompts-supplement.yaml` 中单独维护，机器读取配置中明确标注为此前新增的工具兼容补充，不能当作原文内容。
 +>
 +> **存储对应：** 下文“本文件夹”及相对产物路径指一篇论文实例。题目、摘要、资源、具体方案、参数和正文填入该实例的配置与文档，不填回本通用文件。环境调查、能力需求、选型、配置执行与验证分别记录在实例 `environment/` 和选定环境文件中；主文件只规定方法及引用位置。原目录树的 LaTeX 文件结构保留为可选格式示例，实际格式与路径在实例 `paper/output.yaml` 中选择。
 +>
-+> **改动审阅：** [逐项修改对照](APPROVED_CHANGES.md)列出全部替换；[原文差异](original-to-current.diff)可查看增删行。原文长期完整保存在本地 `references/original/整理版.md`，公开对照副本为 [原版整理文件](references/original/整理版.md)。具体实例、环境、密钥和运行记录不在公共仓库中。
++> **改动审阅：** [逐项修改对照](APPROVED_CHANGES.md)列出全部替换；[原文差异](original-to-current.diff)可查看增删行。[初始正文对照](references/original/整理版.md)保留初始提示词内容，已去除正文以外的附带说明。具体实例、环境、密钥和运行记录不在公共仓库中。
  
- ## 作者开场
+ ## 提示词正文
  
-@@ -63,7 +71,7 @@
+@@ -53,7 +61,7 @@
  | G：论文撰写 | 19 | PAPER_REVISION | 包括：页数限制、内容情况、数据充分性等方面的修订 |
  | H：稿件 | 20 | QUALITY_GATE | [门控] |
  | H：稿件 | 21 | KNOWLEDGE_ARCHIVE |  |
@@ -24,7 +22,7 @@
  | H：稿件 | 23 | CITATION_VERIFY | 相关性审查 |
  | I：审核迭代 | 24 | 3RD_PARTY_REVIEW | 调用单独上下文大模型、最严苛的外部专家评审 |
  | I：审核迭代 | 25 | REBUTTAL | 根据审稿意见进行针对性优化，包含实验和论文 |
-@@ -86,11 +94,11 @@
+@@ -76,11 +84,11 @@
  | A+：硬件检测 | 自动检测 GPU（NVIDIA CUDA / Apple MPS / 纯 CPU），性能不足时警告用户，据此调整代码生成策略 |
  | B：文献 | 多源搜索（OpenAlex → Semantic Scholar → arXiv）获取真实论文，按相关性筛选，提取知识卡片 |
  | C：综合 | 聚类研究发现，识别研究空白，通过多 Agent 辩论生成可验证假设 |
@@ -38,7 +36,7 @@
  
  ## 本文件夹
  
-@@ -157,7 +165,7 @@
+@@ -147,7 +155,7 @@
  
  ### 实验要求
  
@@ -47,7 +45,7 @@
  
  数据充足性：你应该保证数据的充足性，进行足够量的实验，至少10-15轮不同条件的实验，保证实验的充分性和说服力。在所有的检查中，都必须检查数据是否可以支撑你的结论，保证结论的合理性和严谨性。
  
-@@ -173,13 +181,13 @@
+@@ -163,13 +171,13 @@
  
  内容真实性（最重要）：你必须保证论文中的所有内容细节都符合&lt;项目名称&gt;目前已有的设计和实现，不能编造不存在的功能或者特性。你应该通过频繁地访问&lt;项目名称&gt;的源码库、文档库和示例库来验证你的理解，并且在论文中准确地描述&lt;项目名称&gt;的设计原则、核心原语和执行模型。
  
@@ -68,7 +66,7 @@
  
  ### 论文结构
  
-@@ -192,7 +200,7 @@
+@@ -182,7 +190,7 @@
  - Discussion：讨论我们的工作在实际应用中的意义、局限性和未来改进方向。
  - Conclusion：总结我们的工作，并展望未来的研究方向。
  
@@ -77,7 +75,7 @@
  
  除了上述部分外，还有参考文献和附录，同样开新的文件来撰写，保证结构清晰。
  
-@@ -210,15 +218,15 @@
+@@ -200,15 +208,15 @@
  
  ### 有关配图
  
@@ -97,7 +95,7 @@
  
  ````bash
  export OPENAI_API_BASE="<大模型API基础路径>"
-@@ -228,20 +236,20 @@
+@@ -218,20 +226,20 @@
  export TAVILY_API_KEY="<TAVILY_KEY>"
  ````
  
@@ -123,7 +121,7 @@
  - Git 版本控制：你应该将你的代码和论文草稿都放在 Git 仓库中，并且在每个阶段结束后提交一次，记录提交信息（如：完成了实验设计、完成了论文大纲等），以便于追踪你的进展和回滚到之前的版本。
  
  ## 目标
-@@ -273,7 +281,7 @@
+@@ -263,7 +271,7 @@
  
  反幻觉禁令： 严禁使用 random.uniform() 或类似随机数生成器来伪造下降的 Loss 曲线或实验结果。
  
@@ -132,7 +130,7 @@
  
  真实收敛门控： 必须实现真实的收敛停止准则（如连续 N 次迭代 Objective 变化 &lt; 1e-8）。严禁仅仅使用固定的 for 循环而不做收敛检查。
  
-@@ -285,9 +293,9 @@
+@@ -275,9 +283,9 @@
  
  Sushi, not Curry (聚焦原则)： 一篇好论文只有 1-2 个核心创新点（Novelty），其余部分保持极致的简洁和严谨。不要堆砌毫无关联的模块。
  
@@ -145,7 +143,7 @@
  
  强基线 (Strong Baselines)： 基线模型必须经过与你提出的方法同等精力的超参数调优。
  
-@@ -303,16 +311,26 @@
+@@ -293,16 +301,26 @@
  
  ### 🛠️ 5. 环境与库兼容性规范 (针对阶段 10)
  
@@ -176,7 +174,7 @@
  
  > 整理注：按原文的 blocks、stages、sub_prompts、version 恢复层级；规范弯引号与多行字符串，保留各字段解析后的文本内容。仅验证 YAML 格式及字段内容，未运行其中的流程。
  
-@@ -344,9 +362,10 @@
+@@ -334,9 +352,10 @@
    code_generation:
      max_tokens: 8192
      system: |-
@@ -190,7 +188,7 @@
        TOPIC: {topic}
  
        CRITICAL REQUIREMENTS — your code MUST satisfy ALL of these:
-@@ -376,8 +395,8 @@
+@@ -366,8 +385,8 @@
        - main.py must ALSO write a `results.json` file with structured experiment results
          (e.g. per-algorithm, per-function, per-dimension metrics as nested dicts/lists)
        - Use deterministic seeds (numpy.random.seed or random.seed)
@@ -201,7 +199,7 @@
        - MUST implement convergence stopping criteria (e.g. stop when objective change < 1e-8 for
          N consecutive iterations) — do NOT just run a fixed number of iterations
        {pkg_hint}
-@@ -391,7 +410,7 @@
+@@ -381,7 +400,7 @@
        - If you report convergence_rate, define it as iterations_to_convergence / max_iterations
          or similar — it MUST differ between algorithms
  
@@ -210,7 +208,7 @@
        - np.trapz is REMOVED → use np.trapezoid
        - np.erfinv does NOT exist → use scipy.special.erfinv
        - np.bool, np.int, np.float, np.complex are REMOVED → use Python builtins
-@@ -407,13 +426,14 @@
+@@ -397,13 +416,14 @@
  
        Design an experiment plan as YAML.
        Required keys: objectives,datasets,baselines,proposed_methods,ablations,metrics,risks,compute_budget.
@@ -226,7 +224,7 @@
        Preserve content quality and readability.
        Input paper:
        {revised}
-@@ -480,27 +500,27 @@
+@@ -470,27 +490,27 @@
        2. NARRATIVE: The paper is a short, rigorous, evidence-based technical story with a takeaway readers care about.
        3. FIGURE 1: The most important figure. It should convey whatever is most important — many readers go straight to Figure 1.
        4. STRONG BASELINES: Invest real effort in making baselines competitive. Reviewers catch weak baselines.
@@ -260,7 +258,7 @@
        Required sections: Title, Abstract, Introduction, Related Work, Method, Experiments, Results, Discussion, Limitations, Conclusion. Do NOT include a References section — it will be auto-generated.
        {topic_constraint}{exp_metrics_instruction}{citation_instruction}Outline:
        {outline}
-@@ -520,11 +540,11 @@
+@@ -510,11 +530,11 @@
    paper_revision:
      max_tokens: 32768
      system: |-
@@ -275,7 +273,7 @@
        {topic_constraint}Draft:
        {draft}
  
-@@ -541,7 +561,9 @@
+@@ -531,7 +551,9 @@
        2. METHODOLOGY-EVIDENCE CONSISTENCY: Compare the paper's claims about experimental setup (number of trials, statistical tests, hyperparameters, baselines) against the actual experiment evidence provided below. Flag any discrepancies where the paper claims something that is NOT supported by the actual code or results. For example: - Paper claims N trials but code shows a different number - Paper claims statistical tests (ANOVA, t-test) but code has none - Paper reports metrics not present in actual results - Paper describes methods not implemented in code
        3. TRIAL COUNT: The actual number of experiment runs is stated in the evidence below. If the paper claims a DIFFERENT number of trials (e.g., "100 independent trials" when only 1 was run), flag this as a CRITICAL fabrication that MUST be corrected.
        4. PAPER LENGTH: This paper targets NeurIPS/ICML submission (9 pages). Check that each section has adequate depth. Flag sections that are too short: Abstract (<150 words), Introduction (<700 words), Related Work (<500 words), Method (<800 words), Experiments (<600 words), Results (<500 words). A paper with fewer than 4000 total words is CRITICALLY under-length.
@@ -286,7 +284,7 @@
        Paper draft:
        {draft}
        {experiment_evidence}
-@@ -630,7 +652,7 @@
+@@ -620,7 +642,7 @@
        ## All Project Files
        {all_files_ctx}
  
@@ -295,7 +293,7 @@
        Return ONLY the corrected code for `{fname}`.
    iterative_improve:
      max_tokens: 8192
-@@ -641,7 +663,7 @@
+@@ -631,7 +653,7 @@
        Return the improved files using ```filename:xxx.py format for each file.
        Primary metric key: {metric_key}
        Metric direction: {metric_direction}
